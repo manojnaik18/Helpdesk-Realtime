@@ -1,0 +1,64 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+.app {
+  display: flex;
+  height: 100vh;
+  gap: 12px;
+  padding: 12px;
+  box-sizing: border-box;
+}
+
+.left {
+  width: 350px;
+  border-right: 1px solid #ccc;
+  padding: 10px;
+}
+
+.right {
+  flex: 1;
+  padding: 10px;
+}
+
+.chat {
+  height: 60vh;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+.message {
+  margin-bottom: 10px;
+  padding: 6px;
+  border-radius: 6px;
+  max-width: 80%;
+}
+
+.message.me {
+  background: #d2ffd2;
+  align-self: flex-end;
+}
+
+.message.other {
+  background: #f1f1f1;
+}
+
+.controls {
+  display: flex;
+  gap: 10px;
+}
+
+video {
+  width: 45%;
+  background: black;
+  border: 1px solid #aaa;
+}
+
+.video-area {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
