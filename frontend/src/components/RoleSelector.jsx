@@ -1,12 +1,13 @@
 import React from "react";
 
-export default function RoleSelector({ role, setRole, onExit }) {
+export default function RoleSelector({ role, setRole, onExit, disabled }) {
   return (
-    <div>
+    <div className="role-selector">
       <h3>Choose Role</h3>
       <label>
         <input
           type="radio"
+          disabled={disabled}
           checked={role === "customer"}
           onChange={() => setRole("customer")}
         />
@@ -16,6 +17,7 @@ export default function RoleSelector({ role, setRole, onExit }) {
       <label>
         <input
           type="radio"
+          disabled={disabled}
           checked={role === "agent"}
           onChange={() => setRole("agent")}
         />

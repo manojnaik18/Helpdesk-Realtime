@@ -17,12 +17,18 @@ export default function VideoPanel({ role, localStream, remoteStream, onToggleCa
   }, [remoteStream]);
 
   return (
-    <div>
+    <div className="video-panel">
       <h3>Video Preview</h3>
 
       <div className="video-area">
-        <video ref={localVideo} autoPlay muted playsInline />
-        <video ref={remoteVideo} autoPlay playsInline />
+        <div className="video-container">
+          <h5 className="video-title">{role === "customer" ? "Customer (You)" : "Agent (You)"}</h5>
+          <video ref={localVideo} autoPlay muted playsInline />
+        </div>
+        <div className="video-container">
+          <h5 className="video-title">{role === "customer" ? "Agent" : "Customer"}</h5>
+          <video ref={remoteVideo} autoPlay playsInline />
+        </div>
       </div>
 
       {role === "customer" && (

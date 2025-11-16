@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import RoleSelector from "./components/RoleSelector";
 import ChatPanel from "./components/ChatPanel";
 import VideoPanel from "./components/VideoPanel";
+import "./App.css";
 
 const SIGNALING_URL = "ws://localhost:8080";
 const ROOM_ID = "helpdesk-room-1";
@@ -151,6 +152,7 @@ export default function App() {
       sendSignal({
         type: "offer",
         roomId: ROOM_ID,
+        to: peers[0]?.peerId,
         from: role,
         sdp: offer
       });
@@ -227,12 +229,14 @@ export default function App() {
   return (
     <div className="app">
       {!role ? (
-        <RoleSelector role={role} setRole={setRole} />
+        <div className="role-selector-initial">
+          <RoleSelector role={role} setRole={setRole} />
+        </div>
       ) : (
         <>
           <div className="left">
-            <RoleSelector role={role} setRole={setRole} onExit={handleExit} />
-            <ChatPanel messages={messages} onSend={sendChat} />
+            <RoleSelector role={role} setRole={setRole} onExit={handleExit} disabled={!!role} />
+            <ChatPanel messages={messages} onSend={sendChat} role={role} />
           </div>
 
           <div className="right">
@@ -243,14 +247,16 @@ export default function App() {
               onToggleCamera={toggleCamera}
             />
 
-            <h4>Peers :</h4>
-            <ul>
-              {peers.map((p) => (
-                <li key={p.peerId}>
-                  {p.peerId} — {p.role}
-                </li>
-              ))}
-            </ul>
+            <div className="peer-list">
+              <h4>Peers : </h4>
+              <ul>
+                {peers.map((p) => (
+                  <li key={p.peerId}>
+                    {p.peerId} — {p.role}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </>
       )}

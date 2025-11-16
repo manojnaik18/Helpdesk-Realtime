@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 
-export default function ChatPanel({ messages, onSend }) {
+export default function ChatPanel({ messages, onSend, role }) {
   const [text, setText] = useState("");
   const ref = useRef();
 
@@ -9,12 +9,12 @@ export default function ChatPanel({ messages, onSend }) {
   }, [messages]);
 
   return (
-    <div>
+    <div className="chat-panel">
       <h3>Chat</h3>
 
       <div className="chat" ref={ref}>
         {messages.map((m, i) => (
-          <div key={i} className={`message ${m.from === "customer" ? "me" : "other"}`}>
+          <div key={i} className={`message ${m.from === role ? "me" : "other"}`}>
             <strong>{m.from}:</strong> {m.text}
           </div>
         ))}

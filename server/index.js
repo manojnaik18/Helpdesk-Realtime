@@ -1,5 +1,5 @@
 import dotenv from "dotenv";
-import { WebSocketServer } from "ws";
+import { WebSocketServer, WebSocket } from "ws";
 import { v4 as uuidv4 } from "uuid";
 
 dotenv.config();
