@@ -243,7 +243,7 @@ export default function App() {
               onToggleCamera={toggleCamera}
             />
 
-            <h4>Peers1 :</h4>
+            <h4>Peers :</h4>
             <ul>
               {peers.map((p) => (
                 <li key={p.peerId}>
